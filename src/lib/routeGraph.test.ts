@@ -199,6 +199,18 @@ describe('útvonaltervezés a Folgaria gráfon', () => {
     expect(steps[steps.length - 1]).toMatchObject({ id: '21', from: 'j_rainer_mid' });
   });
 
+  it('a 22-es fekete Rainer-variáns a 21-es felénél indul és a 21-es utolsó hatodánál tér vissza', () => {
+    expect(findPiste('22').difficulty).toBe('black');
+    const fromMid = optionsAfter(startWith('21')).find((option) => option.piste.id === '22');
+    expect(fromMid).toMatchObject({ fromNodeId: 'j_rainer_mid', toNodeId: 'j_21_22_join' });
+    expect(getPisteRunsFrom(network, 'j_21_22_join').map((run) => `${run.piste.id}:${run.toNodeId}`)).toEqual(['21:14_start']);
+  });
+
+  it('a 23c Leite a 15-ös felvonó két végét köti össze', () => {
+    expect(getPisteRunsFrom(network, '15_end').map((run) => run.piste.id)).toContain('23c');
+    expect(findPiste('23c')).toMatchObject({ difficulty: 'red', nodeIds: ['15_end', '15_start'] });
+  });
+
   it('a 14a és 14b összekötő pályák a felvonók alsó állomásait kötik össze', () => {
     const steps = choose(startWith('14a'), '14b');
     expect(steps[steps.length - 1]).toMatchObject({ from: '9_start', to: '6_start' });

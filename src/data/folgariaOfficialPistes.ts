@@ -35,7 +35,7 @@ export const FOLGARIA_OFFICIAL_PISTES: OfficialPiste[] = [
   { id: '19', name: 'Passo Coe', color: 'blue' },
   { id: '20', name: 'Baby F. Piccolo', color: 'blue' },
   { id: '21', name: 'Rainer', color: 'red' },
-  { id: '22', name: 'Variante Rainer', color: 'blue' },
+  { id: '22', name: 'Variante Rainer', color: 'black' },
   { id: '23', name: 'Plaut', color: 'blue' },
   { id: '23b', name: 'Plaut - Bus de la Nef', color: 'blue' },
   { id: '23c', name: 'Leite', color: 'red' },
