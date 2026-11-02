@@ -15,6 +15,7 @@ const PISTE_COLORS: Record<Difficulty, { bg: string; text: string }> = {
 };
 
 const LIFT_COLOR = { bg: '#fef3c7', text: '#92400e' };
+const FALLBACK_PISTE_COLOR = { bg: '#64748b', text: '#ffffff' };
 
 interface ChatMessageItemProps {
   message: ChatMessage;
@@ -86,7 +87,7 @@ function RouteStepChip({ step }: RouteStepChipProps) {
     );
   }
 
-  const color = PISTE_COLORS[step.difficulty];
+  const color = PISTE_COLORS[step.difficulty] ?? FALLBACK_PISTE_COLOR;
   return (
     <span
       className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold shadow-sm"
