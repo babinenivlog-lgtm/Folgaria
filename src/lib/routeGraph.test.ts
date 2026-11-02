@@ -211,6 +211,13 @@ describe('útvonaltervezés a Folgaria gráfon', () => {
     expect(findPiste('23c')).toMatchObject({ difficulty: 'red', nodeIds: ['15_end', '15_start'] });
   });
 
+  it('a Baby Coe szőnyeg alja a 23-as felénél csatlakozik, onnan a 24-esen a 16-os alja érhető el', () => {
+    expect(getLiftsFrom(network, 'j_carpet_23d').map((lift) => lift.id)).toEqual(['lift_carpet_baby_coe']);
+    expect(getPisteRunsFrom(network, 'j_babycoe_top')).toMatchObject([{ piste: { id: '23d' }, toNodeId: 'j_carpet_23d' }]);
+    const steps = choose(choose(startWith('23d'), '23'), '24');
+    expect(steps[steps.length - 1]).toMatchObject({ id: '24', to: '16_start' });
+  });
+
   it('a 14a és 14b összekötő pályák a felvonók alsó állomásait kötik össze', () => {
     const steps = choose(startWith('14a'), '14b');
     expect(steps[steps.length - 1]).toMatchObject({ from: '9_start', to: '6_start' });

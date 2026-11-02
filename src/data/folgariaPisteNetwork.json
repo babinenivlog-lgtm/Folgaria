@@ -56,7 +56,9 @@
     {"id": "j_coston_mid", "name": "Coston kétharmadánál elágazás (31 kezdete)", "type": "junction"},
     {"id": "j_panoramica_stella", "name": "Panoramica és Stella d'Italia átváltó pont", "type": "junction"},
     {"id": "j_francolini_5b", "name": "Francolini 5b elágazás (6-os és 9-es közös szakaszán)", "type": "junction"},
-    {"id": "j_6_9_mid", "name": "6-os és 9-es elágazás (6-os felénél)", "type": "junction"}
+    {"id": "j_6_9_mid", "name": "6-os és 9-es elágazás (6-os felénél)", "type": "junction"},
+    {"id": "j_babycoe_top", "name": "Baby Coe felső pont (varázsszőnyeg teteje)", "type": "junction"},
+    {"id": "j_carpet_23d", "name": "Baby Coe varázsszőnyeg alja (23 felénél)", "type": "junction"}
   ],
   "pistes": [
     {"id": "1", "name": "Maso Spilzi", "type": "blue", "nodes": ["1_end", "j_maso_half", "j_1b_join", "1_start"]},
@@ -88,10 +90,10 @@
     {"id": "20", "name": "Baby F. Piccolo", "type": "blue", "nodes": ["13_end", "13_start"]},
     {"id": "21", "name": "Rainer", "type": "red", "nodes": ["14_end", "j_rainer_mid", "j_21_22_join", "14_start"]},
     {"id": "22", "name": "Variante Rainer", "type": "black", "nodes": ["j_rainer_mid", "j_21_22_join"]},
-    {"id": "23", "name": "Plaut", "type": "blue", "nodes": ["15_end", "j_plaut_start", "j_termental_23", "15_start", "16_end"]},
+    {"id": "23", "name": "Plaut", "type": "blue", "nodes": ["15_end", "j_plaut_start", "j_carpet_23d", "j_termental_23", "15_start", "16_end"]},
     {"id": "23b", "name": "Plaut - Bus de la Nef", "type": "blue", "nodes": ["j_plaut_start", "j_passo_coe"]},
     {"id": "23c", "name": "Leite", "type": "red", "nodes": ["15_end", "15_start"]},
-    {"id": "23d", "name": "Baby Coe", "type": "blue", "nodes": []},
+    {"id": "23d", "name": "Baby Coe", "type": "blue", "nodes": ["j_babycoe_top", "j_carpet_23d"]},
     {"id": "24", "name": "Termental", "type": "blue", "nodes": ["16_end", "j_termental_23", "16_start", "15_start"]},
     {"id": "25", "name": "Pioverna", "type": "red", "nodes": ["17_end", "17_start"]},
     {"id": "25b", "name": "Skiweg Costa d'Agra", "type": "blue", "nodes": ["17_end", "j_costa_agra", "18_start"]},
@@ -108,6 +110,7 @@
     {"from": "5b", "to": "5", "atNodeId": "j_carpet_5"}
   ],
   "extraLifts": [
-    {"id": "lift_carpet_5", "name": "5-ös varázsszőnyeg", "from": "j_carpet_5", "to": "1_end", "onlyPisteIds": ["1b"]}
+    {"id": "lift_carpet_5", "name": "5-ös varázsszőnyeg", "from": "j_carpet_5", "to": "1_end", "onlyPisteIds": ["1b"]},
+    {"id": "lift_carpet_baby_coe", "name": "Baby Coe varázsszőnyeg", "from": "j_carpet_23d", "to": "j_babycoe_top"}
   ]
 }
