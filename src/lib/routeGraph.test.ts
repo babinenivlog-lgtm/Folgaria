@@ -212,9 +212,10 @@ describe('útvonaltervezés a Folgaria gráfon', () => {
     expect(getPisteRunsFrom(network, '19_end').map((run) => run.piste.id)).toEqual(expect.arrayContaining(['27', '27b']));
   });
 
-  it('a 9b pálya a Rainer elágazásnál a 21-esre vezet', () => {
+  it('a 9b pálya a 21-es pályába a 21 és 22 elágazása után csatlakozik', () => {
     const steps = choose(startWith('9b'), '21');
-    expect(steps[steps.length - 1]).toMatchObject({ id: '21', from: 'j_rainer_mid' });
+    expect(steps[steps.length - 1]).toMatchObject({ id: '21', from: 'j_9b_21', to: 'j_21_22_join' });
+    expect(getPisteRunsFrom(network, 'j_rainer_mid').map((run) => run.piste.id).sort()).toEqual(['21', '22']);
   });
 
   it('a 22-es fekete Rainer-variáns a 21-es felénél indul és a 21-es utolsó hatodánál tér vissza', () => {
