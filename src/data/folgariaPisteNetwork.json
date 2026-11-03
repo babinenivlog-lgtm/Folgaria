@@ -30,12 +30,10 @@
     {"id": "14_end", "name": "14-es felvonó (F. Piccolo - Plaut) teteje", "type": "lift_top"},
     {"id": "15_start", "name": "15-ös felvonó (Passo Coe - Plaut) alj", "type": "lift_bottom"},
     {"id": "15_end", "name": "15-ös felvonó (Passo Coe - Plaut) teteje", "type": "lift_top"},
-    {"id": "16_start", "name": "16-os felvonó (M. Piovernetta - Termental) alj", "type": "lift_bottom"},
     {"id": "16_end", "name": "16-os felvonó (M. Piovernetta - Termental) teteje", "type": "lift_top"},
     {"id": "17_start", "name": "17-es felvonó (M. Piovernetta - M. Pioverna) alj", "type": "lift_bottom"},
     {"id": "17_end", "name": "17-es felvonó (M. Piovernetta - M. Pioverna) teteje", "type": "lift_top"},
     {"id": "18_start", "name": "18-as felvonó (V. d. Lanze - Costa d'Agra) alj", "type": "lift_bottom"},
-    {"id": "18_end", "name": "18-as felvonó (V. d. Lanze - Costa d'Agra) teteje", "type": "lift_top"},
     {"id": "19_start", "name": "19-es felvonó (Tre Sassi - M. Coston) alj", "type": "lift_bottom"},
     {"id": "19_end", "name": "19-es felvonó (Tre Sassi - M. Coston) teteje", "type": "lift_top"},
     {"id": "20_start", "name": "20-as felvonó (Coston - M. Coston) alj", "type": "lift_bottom"},
@@ -92,10 +90,10 @@
     {"id": "23b", "name": "Plaut - Bus de la Nef", "type": "blue", "nodes": ["j_plaut_start", "j_passo_coe"]},
     {"id": "23c", "name": "Leite", "type": "red", "nodes": ["15_end", "15_start"]},
     {"id": "23d", "name": "Baby Coe", "type": "blue", "nodes": ["j_babycoe_top", "j_carpet_23d"]},
-    {"id": "24", "name": "Termental", "type": "blue", "nodes": ["16_end", "j_termental_23", "16_start", "15_start"]},
+    {"id": "24", "name": "Termental", "type": "blue", "nodes": ["16_end", "j_termental_23", "17_end", "15_start"]},
     {"id": "25", "name": "Pioverna", "type": "red", "nodes": ["17_end", "17_start"]},
     {"id": "25b", "name": "Skiweg Costa d'Agra", "type": "blue", "nodes": ["17_end", "j_costa_agra", "18_start"]},
-    {"id": "26", "name": "Val delle Lanze", "type": "red", "nodes": ["18_end", "j_costa_agra"]},
+    {"id": "26", "name": "Val delle Lanze", "type": "red", "nodes": ["17_end", "j_costa_agra"]},
     {"id": "26b", "name": "Val delle Lanze facile", "type": "blue", "nodes": ["j_costa_agra", "18_start"]},
     {"id": "27", "name": "Tre Sassi", "type": "black", "nodes": ["19_end", "19_start"]},
     {"id": "27b", "name": "Var. Tre Sassi", "type": "blue", "nodes": ["19_end", "19_start"]},
@@ -110,6 +108,8 @@
   "extraLifts": [
     {"id": "lift_carpet_5", "name": "5-ös varázsszőnyeg", "from": "j_carpet_5", "to": "1_end", "onlyPisteIds": ["1b"]},
     {"id": "lift_7", "name": "F. Grande - D. Martinella felvonó", "from": "8_end", "to": "7_end"},
-    {"id": "lift_carpet_baby_coe", "name": "Baby Coe varázsszőnyeg", "from": "j_carpet_23d", "to": "j_babycoe_top"}
+    {"id": "lift_carpet_baby_coe", "name": "Baby Coe varázsszőnyeg", "from": "j_carpet_23d", "to": "j_babycoe_top"},
+    {"id": "lift_16", "name": "M. Piovernetta - Termental felvonó", "from": "17_end", "to": "16_end"},
+    {"id": "lift_18", "name": "V. d. Lanze - Costa d'Agra felvonó", "from": "18_start", "to": "17_end"}
   ]
 }

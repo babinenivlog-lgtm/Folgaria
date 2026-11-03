@@ -173,11 +173,19 @@ describe('útvonaltervezés a Folgaria gráfon', () => {
     expect(pisteIdsOf(steps)).toEqual(['23', '23b', '19']);
   });
 
-  it('a 24-es pálya a 16-os felvonó alsó állomásához vezet', () => {
+  it('a 24-es pálya a 16-os felvonó alsó állomásához, a 17-es felső pontjához vezet', () => {
     const steps = choose(startWith('24'), '24');
-    expect(steps[steps.length - 1]).toMatchObject({ id: '24', to: '16_start' });
-    expect(getLiftsFrom(network, '16_start').map((lift) => lift.id)).toEqual(['lift_16']);
+    expect(steps[steps.length - 1]).toMatchObject({ id: '24', to: '17_end' });
+    expect(getLiftsFrom(network, '17_end').map((lift) => lift.id)).toEqual(['lift_16']);
   });
+
+  it('a 26b-ről a 18-as felvonóval a 17-es felső pontjába lehet jutni, onnan a 25 és a 24 is elérhető', () => {
+    const offered = optionsAfter(startWith('26b'));
+    expect(offered.find((option) => option.piste.id === '25')).toMatchObject({ fromNodeId: '17_end', toNodeId: '17_start' });
+    expect(offered.find((option) => option.piste.id === '25')?.lifts.map((lift) => lift.id)).toEqual(['lift_18']);
+    expect(offered.find((option) => option.piste.id === '24')).toMatchObject({ fromNodeId: '17_end', toNodeId: '15_start' });
+  });
+
 
   it('a 24-es pálya a közös csomópontnál a 23-as pályára is átvált', () => {
     const offered = optionsAfter(startWith('24')).map((option) => option.piste.id);
@@ -225,7 +233,7 @@ describe('útvonaltervezés a Folgaria gráfon', () => {
     expect(getLiftsFrom(network, 'j_carpet_23d').map((lift) => lift.id)).toEqual(['lift_carpet_baby_coe']);
     expect(getPisteRunsFrom(network, 'j_babycoe_top')).toMatchObject([{ piste: { id: '23d' }, toNodeId: 'j_carpet_23d' }]);
     const steps = choose(choose(startWith('23d'), '23'), '24');
-    expect(steps[steps.length - 1]).toMatchObject({ id: '24', to: '16_start' });
+    expect(steps[steps.length - 1]).toMatchObject({ id: '24', to: '17_end' });
   });
 
   it('a 14a és 14b összekötő pályák a felvonók alsó állomásait kötik össze', () => {
