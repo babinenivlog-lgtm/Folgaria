@@ -13,7 +13,6 @@
     {"id": "5_end", "name": "5-ös felvonó (Baby Fondo Grande) teteje", "type": "lift_top"},
     {"id": "6_start", "name": "6-os felvonó (F. Grande - Sommo Alto) alj", "type": "lift_bottom"},
     {"id": "6_end", "name": "6-os felvonó (F. Grande - Sommo Alto) teteje", "type": "lift_top"},
-    {"id": "7_start", "name": "7-es felvonó (F. Grande - D. Martinella) alj", "type": "lift_bottom"},
     {"id": "7_end", "name": "7-es felvonó (F. Grande - D. Martinella) teteje", "type": "lift_top"},
     {"id": "8_start", "name": "8-as felvonó (Serrada - D. Martinella) alj", "type": "lift_bottom"},
     {"id": "8_end", "name": "8-as felvonó (Serrada - D. Martinella) teteje", "type": "lift_top"},
@@ -55,8 +54,7 @@
     {"id": "j_costa_agra", "name": "Costa d'Agra kétharmadánál csatlakozás (26, 26b)", "type": "junction"},
     {"id": "j_coston_mid", "name": "Coston kétharmadánál elágazás (31 kezdete)", "type": "junction"},
     {"id": "j_panoramica_stella", "name": "Panoramica és Stella d'Italia átváltó pont", "type": "junction"},
-    {"id": "j_francolini_5b", "name": "Francolini 5b elágazás (6-os és 9-es közös szakaszán)", "type": "junction"},
-    {"id": "j_6_9_mid", "name": "6-os és 9-es elágazás (6-os felénél)", "type": "junction"},
+    {"id": "j_francolini_5b", "name": "Francolini elágazás (6-os, 9-es, 9a és 5b közös pontja)", "type": "junction"},
     {"id": "j_babycoe_top", "name": "Baby Coe felső pont (varázsszőnyeg teteje)", "type": "junction"},
     {"id": "j_carpet_23d", "name": "Baby Coe varázsszőnyeg alja (23 felénél)", "type": "junction"}
   ],
@@ -69,14 +67,14 @@
     {"id": "4", "name": "Ortesino", "type": "red", "nodes": ["3_end", "3_start"]},
     {"id": "5", "name": "Stella d'Italia", "type": "blue", "nodes": ["3_end", "j_panoramica_stella", "j_carpet_5"]},
     {"id": "5b", "name": "Coll. Francolini - Ortesino", "type": "blue", "nodes": ["j_francolini_5b", "j_carpet_5"]},
-    {"id": "6", "name": "Francolini (pista di solo rientro)", "type": "red", "nodes": ["3_end", "j_francolini_5b", "j_6_9_mid", "4_start"]},
+    {"id": "6", "name": "Francolini (pista di solo rientro)", "type": "red", "nodes": ["3_end", "j_francolini_5b", "4_start"]},
     {"id": "7", "name": "Baby Fondo Grande", "type": "blue", "nodes": ["5_end", "5_start"]},
     {"id": "8", "name": "Salizzona", "type": "red", "nodes": ["6_end", "6_start"]},
-    {"id": "9", "name": "Panoramica", "type": "blue", "nodes": ["6_end", "3_end", "j_francolini_5b", "j_6_9_mid"]},
-    {"id": "9a", "name": "9 alsó szakasz", "type": "blue", "nodes": ["j_6_9_mid", "5_start"]},
+    {"id": "9", "name": "Panoramica", "type": "blue", "nodes": ["6_end", "3_end", "j_francolini_5b"]},
+    {"id": "9a", "name": "9 alsó szakasz", "type": "blue", "nodes": ["j_francolini_5b", "5_start"]},
     {"id": "9b", "name": "Coll. F. Grande - F. Piccolo", "type": "blue", "nodes": ["6_end", "j_rainer_mid"]},
-    {"id": "10", "name": "Martinella Nord", "type": "black", "nodes": ["7_end", "7_start"]},
-    {"id": "10b", "name": "Agonistica", "type": "black", "nodes": ["7_end", "7_start"]},
+    {"id": "10", "name": "Martinella Nord", "type": "black", "nodes": ["7_end", "8_end"]},
+    {"id": "10b", "name": "Agonistica", "type": "black", "nodes": ["7_end", "8_end"]},
     {"id": "11", "name": "Pragrant", "type": "red", "nodes": ["8_end", "8_start"]},
     {"id": "12", "name": "Serrada", "type": "blue", "nodes": ["7_end", "j_serrada_half", "8_start"]},
     {"id": "13", "name": "Slalom Toll", "type": "red", "nodes": ["j_serrada_half", "8_start"]},
@@ -111,6 +109,7 @@
   ],
   "extraLifts": [
     {"id": "lift_carpet_5", "name": "5-ös varázsszőnyeg", "from": "j_carpet_5", "to": "1_end", "onlyPisteIds": ["1b"]},
+    {"id": "lift_7", "name": "F. Grande - D. Martinella felvonó", "from": "8_end", "to": "7_end"},
     {"id": "lift_carpet_baby_coe", "name": "Baby Coe varázsszőnyeg", "from": "j_carpet_23d", "to": "j_babycoe_top"}
   ]
 }

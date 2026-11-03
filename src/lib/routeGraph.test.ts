@@ -49,9 +49,9 @@ describe('Folgaria pályaadatbázis', () => {
     invented.forEach((id) => expect(network.pistes.some((piste) => piste.id === id)).toBe(false));
   });
 
-  it('a 6-os és a 9-es közös szakasza a 3-as felvonó tetejétől a felezőpontig tart', () => {
+  it('a 6-os és a 9-es közös szakasza a 3-as felvonó tetejétől a Francolini elágazásig tart', () => {
     const shared = network.segments.filter((segment) => segment.pisteIds.includes('6') && segment.pisteIds.includes('9'));
-    expect(shared.map((segment) => segment.id).sort()).toEqual(['3_end>j_francolini_5b', 'j_francolini_5b>j_6_9_mid']);
+    expect(shared.map((segment) => segment.id)).toEqual(['3_end>j_francolini_5b']);
     shared.forEach((segment) => expect(segment.pisteIds).toEqual(['6', '9']));
   });
 
@@ -60,11 +60,11 @@ describe('Folgaria pályaadatbázis', () => {
     expect(findPiste('9')).toMatchObject({ name: 'Panoramica', difficulty: 'blue' });
   });
 
-  it('a felezőponti csomópontnál a 6-os és a 9 alsó szakasz válik szét', () => {
-    const node = network.nodes.find((item) => item.id === 'j_6_9_mid');
-    expect(node?.pisteIds.sort()).toEqual(['6', '9', '9a']);
-    const runs = getPisteRunsFrom(network, 'j_6_9_mid').map((run) => `${run.piste.id}:${run.toNodeId}`).sort();
-    expect(runs).toEqual(['6:4_start', '9a:5_start']);
+  it('a Francolini elágazásnál válik szét a 6-os, a 9-es, a 9 alsó szakasz és az 5b', () => {
+    const node = network.nodes.find((item) => item.id === 'j_francolini_5b');
+    expect(node?.pisteIds.sort()).toEqual(['5b', '6', '9', '9a']);
+    const runs = getPisteRunsFrom(network, 'j_francolini_5b').map((run) => `${run.piste.id}:${run.toNodeId}`).sort();
+    expect(runs).toEqual(['5b:j_carpet_5', '6:4_start', '9a:5_start']);
   });
 
   it('a csomópontok nem jelennek meg sípályaként', () => {
@@ -79,11 +79,21 @@ describe('Folgaria pályaadatbázis', () => {
 });
 
 describe('útvonaltervezés a Folgaria gráfon', () => {
-  it('a 6-os pályáról a felezőpontnál át lehet menni a 9 alsó szakaszra', () => {
-    const steps = choose(startWith('6'), '6');
-    expect(pisteIdsOf(steps)).toEqual(['6']);
+  it('a 6-os pálya felső részéről át lehet menni a 9 alsó szakaszra', () => {
+    const steps = startWith('6');
+    expect(steps[steps.length - 1]).toMatchObject({ id: '6', to: 'j_francolini_5b' });
     const toLower = optionsAfter(steps).find((option) => option.piste.id === '9a');
-    expect(toLower).toMatchObject({ fromNodeId: 'j_6_9_mid', toNodeId: '5_start' });
+    expect(toLower).toMatchObject({ fromNodeId: 'j_francolini_5b', toNodeId: '5_start' });
+  });
+
+  it('a 8-as felvonó teteje a 7-es felvonó alján van, onnan a 7-essel fel lehet jutni a 14a-ra', () => {
+    const steps = startWith('10');
+    expect(steps[0]).toMatchObject({ id: '10', to: '8_end' });
+    expect(optionsAfter(steps).find((option) => option.piste.id === '14a')).toMatchObject({
+      fromNodeId: '7_end',
+      toNodeId: '9_start',
+    });
+    expect(getLiftsFrom(network, '8_end').map((lift) => lift.id)).toEqual(['lift_7']);
   });
 
   it('a 9-es pályáról a közös szakasz elején át lehet menni a 6-osra', () => {
