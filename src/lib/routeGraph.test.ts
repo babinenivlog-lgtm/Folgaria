@@ -225,9 +225,11 @@ describe('útvonaltervezés a Folgaria gráfon', () => {
     expect(getPisteRunsFrom(network, 'j_21_22_join').map((run) => `${run.piste.id}:${run.toNodeId}`)).toEqual(['21:14_start']);
   });
 
-  it('a 23c Leite a 15-ös felvonó két végét köti össze', () => {
-    expect(getPisteRunsFrom(network, '15_end').map((run) => run.piste.id)).toContain('23c');
-    expect(findPiste('23c')).toMatchObject({ difficulty: 'red', nodeIds: ['15_end', '15_start'] });
+  it('a 23c Leite a 15-ös felvonó két végét köti össze, a 15-ös teteje közös a 14-essel', () => {
+    expect(getPisteRunsFrom(network, '14_end').map((run) => run.piste.id)).toContain('23c');
+    expect(findPiste('23c')).toMatchObject({ difficulty: 'red', nodeIds: ['14_end', '15_start'] });
+    expect(getLiftsFrom(network, '15_start').map((lift) => lift.id)).toEqual(['lift_15']);
+    expect(getLiftsFrom(network, '15_start').map((lift) => lift.to)).toEqual(['14_end']);
   });
 
   it('a Baby Coe szőnyeg alja a 23-as felénél csatlakozik, onnan a 24-esen a 16-os alja érhető el', () => {
