@@ -9,7 +9,7 @@ export interface OfficialPiste {
 export const FOLGARIA_OFFICIAL_PISTES: OfficialPiste[] = [
   { id: '1', name: 'Maso Spilzi', color: 'blue' },
   { id: '1b', name: 'Mora - Costa', color: 'blue' },
-  { id: '1c', name: 'Mora - Ortesino', color: 'green' },
+  { id: '1c', name: 'Mora - Ortesino', color: 'blue' },
   { id: '2', name: 'Dosso Madonna I', color: 'blue' },
   { id: '3', name: 'Dosso Madonna II', color: 'red' },
   { id: '4', name: 'Ortesino', color: 'red' },

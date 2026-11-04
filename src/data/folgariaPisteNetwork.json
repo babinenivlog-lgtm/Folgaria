@@ -59,7 +59,7 @@
   "pistes": [
     {"id": "1", "name": "Maso Spilzi", "type": "blue", "nodes": ["1_end", "j_maso_half", "j_1b_join", "1_start"]},
     {"id": "1b", "name": "Mora - Costa", "type": "blue", "nodes": ["1_end", "j_maso_half", "j_1b_join"]},
-    {"id": "1c", "name": "Mora - Ortesino", "type": "green", "nodes": ["1_end", "3_start"]},
+    {"id": "1c", "name": "Mora - Ortesino", "type": "blue", "nodes": ["1_end", "3_start"]},
     {"id": "2", "name": "Dosso Madonna I", "type": "blue", "nodes": ["2_end", "2_start"]},
     {"id": "3", "name": "Dosso Madonna II", "type": "red", "nodes": ["2_end", "2_start"]},
     {"id": "4", "name": "Ortesino", "type": "red", "nodes": ["3_end", "3_start"]},
